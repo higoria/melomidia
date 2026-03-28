@@ -7,19 +7,19 @@
   
   --color-brand-blue: #0066FF;
   --color-brand-gold: #D4AF37;
-  --color-dark-bg: #050505;
-  --color-dark-card: #0F0F0F;
-  --color-dark-border: rgba(255, 255, 255, 0.1);
+  --color-light-bg: #F8F9FA;
+  --color-light-card: #FFFFFF;
+  --color-light-border: rgba(0, 102, 255, 0.1);
 }
 
 @layer base {
   body {
-    @apply bg-dark-bg text-white font-sans antialiased selection:bg-brand-blue/30;
+    @apply bg-light-bg text-[#1A233A] font-sans antialiased selection:bg-brand-gold/30 selection:text-brand-blue;
   }
 }
 
 .glass {
-  @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  @apply bg-white/80 backdrop-blur-xl border border-brand-blue/10 shadow-sm;
 }
 
 .text-gradient {
@@ -39,12 +39,12 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #F8F9FA;
 }
 ::-webkit-scrollbar-thumb {
-  background: #222;
+  background: #CBD5E1;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #333;
+  background: #94A3B8;
 }

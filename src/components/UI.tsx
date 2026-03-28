@@ -1,9 +1,11 @@
+import React from "react";
 import { motion } from "motion/react";
 import { cn } from "@/src/lib/utils";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
+  className?: string;
   children: React.ReactNode;
 }
 
@@ -16,9 +18,9 @@ export const Button = ({
 }: ButtonProps) => {
   const variants = {
     primary: "bg-brand-blue text-white hover:bg-brand-blue/90 glow-blue",
-    secondary: "bg-brand-gold text-black hover:bg-brand-gold/90 glow-gold",
-    outline: "border border-white/20 hover:bg-white/5 text-white",
-    ghost: "text-white/70 hover:text-white hover:bg-white/5"
+    secondary: "bg-brand-gold text-white hover:bg-brand-gold/90 glow-gold",
+    outline: "border border-brand-blue/30 hover:bg-brand-blue/5 text-brand-blue",
+    ghost: "text-[#1A233A]/70 hover:text-brand-blue hover:bg-brand-blue/5"
   };
 
   const sizes = {
@@ -44,13 +46,21 @@ export const Button = ({
   );
 };
 
-export const Card = ({ className, children, delay = 0 }: { className?: string, children: React.ReactNode, delay?: number }) => (
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  delay?: number;
+  className?: string;
+  children: React.ReactNode;
+  key?: React.Key;
+}
+
+export const Card = ({ className, children, delay = 0, ...props }: CardProps) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay }}
     className={cn("glass rounded-3xl p-8", className)}
+    {...props}
   >
     {children}
   </motion.div>
